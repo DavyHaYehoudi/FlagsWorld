@@ -11,7 +11,6 @@ const Home = () => {
                 <Logo />
                 <Countries />
 
-            Page Accueil
         </div>
     );
 };

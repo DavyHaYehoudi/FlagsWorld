@@ -5,9 +5,12 @@ import App from './App';
 import './styles/index.scss'
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <React.StrictMode>
+      <Router>
+         <App />
+      </Router>
+  </React.StrictMode>
+ ,
   document.getElementById('root')
 );
 
