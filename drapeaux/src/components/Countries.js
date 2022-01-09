@@ -6,23 +6,17 @@ const Countries = () => {
 
     const [data, setData] = useState([]);
     const [rangeValue, setRangeValue] = useState(40);
-    const [sortData, setSortData] = useState([]);
     const [selectedContinent, setSelectedContinent] = useState('');
 
     const continents = ["Africa", "America", "Asia", "Europe", "Oceania"]
 
 useEffect(()=> {
+
     axios
     .get( "https://restcountries.com/v2/all?fields=name,population,region,capital,flag")
     .then(res => setData(res.data))
-
-    const sortData = data.sort((a,b)=>{
-        return (b.population - a.population)
-    })
-    sortData.length = rangeValue;
-    setSortData(sortData)
    
-},[data])
+},[])
 
 
     return (
@@ -47,8 +41,10 @@ useEffect(()=> {
                 }
 
             <ul className = 'countries-list'>
-                { sortData
+                { data
                     .filter(country => country.region.includes(selectedContinent))
+                    .sort((a, b) => b.population - a.population)
+                    .filter((country, index) => index < rangeValue)
                     .map(country => 
                         <Card key={country.name} country = {country}/>)
                 }
