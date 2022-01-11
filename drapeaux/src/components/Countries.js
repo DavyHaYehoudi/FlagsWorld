@@ -27,7 +27,7 @@ useEffect(()=> {
                 <ul>
                     {continents.map(continent => 
                         <li key = { continent }>
-                            <input type='radio' id= {continent} value={continent} checked= {continent == selectedContinent} onChange={e => setSelectedContinent(e.target.value)}/>
+                            <input type='radio'  id= {continent} value={continent} checked= {continent === selectedContinent} onChange={e => setSelectedContinent(e.target.value)}/>
                             <label htmlFor= {continent}>{continent}</label>
                         </li>
                     )}
@@ -55,3 +55,5 @@ useEffect(()=> {
 };
 
 export default Countries;
+
+//Ligne 30 : checked= {continent === selectedContinent} peut être évitée en donnant un attribut 'name' avec une valeur unique, à chaque input, exemple name = 'continent' et ainsi il ne pourra y avoir qu'un choix unique de sélection.
